@@ -76,7 +76,7 @@ function addLine(text, cls) {
 // ===============================
 async function halReply(message) {
     try {
-        const response = await fetch("http://localhost:4000/chat", {
+        const response = await fetch("https://hal-2026.onrender.com/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
