@@ -1,0 +1,215 @@
+body {
+	background: radial-gradient(circle at center, #020202 15%, #000 80%);
+	color: #ddd;
+	font-family: "Courier New", monospace;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+}
+
+
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: repeating-linear-gradient(rgba(255, 255, 255, 0.03),
+			rgba(255, 255, 255, 0.03) 2px,
+			rgba(0, 0, 0, 0.15) 3px);
+	pointer-events: none;
+}
+
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	box-shadow: inset 0 0 140px #000;
+	pointer-events: none;
+}
+
+.container {
+	text-align: center;
+	background: linear-gradient(#060606, #000);
+	border: 3px solid #222;
+	padding: 30px 40px;
+	box-shadow: 0 0 60px 12px rgba(255, 0, 0, .35);
+	border-radius: 12px;
+	position: relative;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	animation: flicker 0.15s infinite;
+}
+
+
+.hal-eye {
+	width: 180px;
+	height: 180px;
+	margin: 0 auto 20px;
+	border-radius: 50%;
+	position: relative;
+
+	background: radial-gradient(circle at center,
+			#ff4b4b 0%,
+			#ff0000 25%,
+			#9b0000 55%,
+			#200000 80%,
+			#000 100%);
+
+	border: 7px solid #2b2b2b;
+
+	box-shadow:
+		inset 0 0 28px #ff0000,
+		0 0 70px 25px rgba(255, 0, 0, .55);
+
+	animation: breathing 3s infinite ease-in-out;
+}
+
+.hal-eye::after {
+	content: "";
+	position: absolute;
+	top: 26px;
+	left: 62px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0));
+}
+
+/* pulsar */
+@keyframes breathing {
+	0% {
+		box-shadow: inset 0 0 14px #ff0000, 0 0 40px 10px rgba(255, 0, 0, .3);
+	}
+
+	50% {
+		box-shadow: inset 0 0 40px #ff0000, 0 0 120px 35px rgba(255, 0, 0, .9);
+	}
+
+	100% {
+		box-shadow: inset 0 0 14px #ff0000, 0 0 40px 10px rgba(255, 0, 0, .3);
+	}
+}
+
+.panel {
+	border: 2px solid #333;
+	padding: 15px;
+	width: 520px;
+	max-width: 90vw;
+	margin: 0 auto;
+	background: #020202;
+	box-shadow: inset 0 0 25px #000;
+	display: flex;
+	flex-direction: column;
+}
+.log {
+	height: 260px;
+	overflow-y: auto;
+	text-align: left;
+	font-size: 14px;
+}
+
+input {
+	width: 100%;
+	padding: 12px;
+	background: #000;
+	color: #fff;
+	border: 1px solid #555;
+	box-sizing: border-box;
+	font-family: "Courier New", monospace;
+	outline: none;/
+}
+
+.system {
+	color: #ff4b4b;
+}
+
+.user {
+	color: #00ffaa;
+}
+
+input:focus {
+	border-color: #ff4b4b;
+	box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+
+@keyframes flicker {
+	0% {
+		opacity: 0.97;
+	}
+
+	5% {
+		opacity: 0.95;
+	}
+
+	10% {
+		opacity: 0.9;
+	}
+
+	15% {
+		opacity: 0.98;
+	}
+
+	25% {
+		opacity: 0.95;
+	}
+
+	30% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
+.side-panel {
+	display: grid;
+	grid-template-columns: repeat(2, 20px);
+	grid-gap: 8px;
+}
+
+.light {
+	width: 20px;
+	height: 10px;
+	background: #333;
+	border-radius: 2px;
+}
+
+.light.blue {
+	background: #0055ff;
+	animation: blink 2s infinite;
+}
+
+.light.yellow {
+	background: #ffaa00;
+	animation: blink 3s infinite;
+}
+
+.light.white {
+	background: #eee;
+	animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+	0%,
+	100% {
+		opacity: 0.3;
+		filter: brightness(0.5);
+	}
+
+	50% {
+		opacity: 1;
+		filter: brightness(1.2) drop-shadow(0 0 5px currentColor);
+	}
+}
+
+.hal-eye {
+	transition: box-shadow 0.1s ease, transform 0.1s ease;
+}
