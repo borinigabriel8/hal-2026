@@ -53,5 +53,4 @@ Acesso pelo **Pages**: https://borinigabriel8.github.io/hal-2026/
 
 ---
 
-## 🚀 Como Executar
 
